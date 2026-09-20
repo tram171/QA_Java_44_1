@@ -1,0 +1,40 @@
+package tests;
+
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
+import static org.openqa.selenium.bidi.script.LocalValue.setValue;
+
+public class textBoxTests {
+
+    @BeforeAll
+    static void beforeAll() {
+        Configuration.browserSize = "1024x768";
+    }
+
+    @Test
+   void successfulFillFormTest() {
+        open("https://demoqa.com/text-box");
+        $("[id=userName]").setValue("David Lynch");
+        $("[id=userEmail]").setValue("lynch@qwe.ru");
+        $("[id=currentAddress]").setValue("his first address 1");
+        $("[id=permanentAddress]").setValue("his second address 2");
+        $("[id=submit]").click();
+
+        $("[id=output] [id=name]").shouldHave(text("David Lynch"));
+        $("[id=output] [id=email]").shouldHave(text("lynch@qwe.ru"));
+        $("[id=output] [id=currentAddress]").shouldHave(text("his first address 1"));
+        $("[id=output] [id=permanentAddress]").shouldHave(text("his second address 2"));
+
+
+
+   }
+
+}
