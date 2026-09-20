@@ -12,16 +12,11 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static org.openqa.selenium.bidi.script.LocalValue.setValue;
 
-public class textBoxTests {
-
-    @BeforeAll
-    static void beforeAll() {
-        Configuration.browserSize = "1024x768";
-    }
+public class textBoxTests extends TestBase {
 
     @Test
    void successfulFillFormTest() {
-        open("https://demoqa.com/text-box");
+        open("/text-box");
         $("[id=userName]").setValue("David Lynch");
         $("[id=userEmail]").setValue("lynch@qwe.ru");
         $("[id=currentAddress]").setValue("his first address 1");
