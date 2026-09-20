@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class homeworkRegistrationForm extends testBase {
+public class fullRegistrationForm extends testBase {
 
     @Test
     void fillsFullForm() {
