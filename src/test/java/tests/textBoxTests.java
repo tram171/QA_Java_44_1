@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static org.openqa.selenium.bidi.script.LocalValue.setValue;
 
-public class textBoxTests extends TestBase {
+public class textBoxTests extends testBase {
 
     @Test
    void successfulFillFormTest() {
