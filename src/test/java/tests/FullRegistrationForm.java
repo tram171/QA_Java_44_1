@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class fullRegistrationForm extends testBase {
+public class FullRegistrationForm extends TestBase {
 
     @Test
     void fillsFullForm() {
@@ -18,7 +18,7 @@ public class fullRegistrationForm extends testBase {
         $("[id=firstName]").setValue("David");
         $("[id=lastName]").setValue("Lynch");
         $("[id=userEmail]").setValue("lynch@qwe.ru");
-        $("[id=gender-radio-3]").selectRadio("Other");
+        $("[id=genterWrapper]").$(byText("Other")).click();
         $("[id=userNumber]").setValue("1234567890");
         $("[id=dateOfBirthInput]").click();
         $(".react-datepicker__year-select").selectOption("1993");
@@ -26,9 +26,9 @@ public class fullRegistrationForm extends testBase {
         $(".react-datepicker__day--003").click();
         $("[id=subjectsInput]").setValue("Arts").pressEnter();
         $("[id=subjectsInput]").setValue("Biology").pressEnter();
-        $("[id=hobbies-checkbox-1]").click();
-        $("[id=hobbies-checkbox-2]").click();
-        $("[id=hobbies-checkbox-3]").click();
+        $("[id=hobbiesWrapper]").$(byText("Sports")).click();
+        $("[id=hobbiesWrapper]").$(byText("Reading")).click();
+        $("[id=hobbiesWrapper]").$(byText("Music")).click();
         $("[id=uploadPicture]").uploadFromClasspath("cat.jpg");
         $("[id=currentAddress]").setValue("г. Новосибирск, ул. Красноводская, д. 36").pressEnter();
         $("[id=react-select-3-input]").setValue("Rajasthan").pressEnter();

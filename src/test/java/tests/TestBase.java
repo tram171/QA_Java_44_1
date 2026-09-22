@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeAll;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class testBase {
+public class TestBase {
 
     @BeforeAll
     static void beforeAll() {

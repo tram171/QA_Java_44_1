@@ -6,7 +6,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class simpleForm extends testBase {
+public class SimpleForm extends TestBase {
 
     @Test
     void onlyUserName() {

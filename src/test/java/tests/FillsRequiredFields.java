@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class fillsRequiredFields extends testBase {
+public class FillsRequiredFields extends TestBase {
 
     @Test
     void fillsForm() {
@@ -17,7 +17,7 @@ public class fillsRequiredFields extends testBase {
 
         $("[id=firstName]").setValue("Петров-Водкин");
         $("[id=lastName]").setValue("Арсений");
-        $("[id=gender-radio-3]").selectRadio("Other");
+        $("[id=genterWrapper]").$(byText("Other")).click();
         $("[id=userNumber]").setValue("1234567890").click();
         $("[id=submit]").click();
 
