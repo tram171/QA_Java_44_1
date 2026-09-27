@@ -9,8 +9,8 @@ import static com.codeborne.selenide.Selenide.open;
 public class TextBoxTests extends TestBase {
 
     @Test
-   void successfulFillFormTest() {
-        open("/text-box");
+    void successfulFillFormTest() {
+        open("/text-box.html");
         $("[id=userName]").setValue("David Lynch");
         $("[id=userEmail]").setValue("lynch@qwe.ru");
         $("[id=currentAddress]").setValue("his first address 1");
@@ -24,6 +24,6 @@ public class TextBoxTests extends TestBase {
 
 
 
-   }
+    }
 
 }
