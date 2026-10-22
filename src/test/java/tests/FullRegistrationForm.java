@@ -15,38 +15,39 @@ public class FullRegistrationForm extends TestBase {
 
         //заполнение всех полей формы
 
-        $("[id=firstName]").setValue("David");
-        $("[id=lastName]").setValue("Lynch");
-        $("[id=userEmail]").setValue("lynch@qwe.ru");
-        $("[id=genterWrapper]").$(byText("Other")).click();
-        $("[id=userNumber]").setValue("1234567890");
+        $("[id=firstName]").setValue(firstName);
+        $("[id=lastName]").setValue(lastName);
+        $("[id=userEmail]").setValue(userEmail);
+        $("[id=genterWrapper]").$(byText(gender)).click();
+        $("[id=userNumber]").setValue(userNumber);
         $("[id=dateOfBirthInput]").click();
-        $(".react-datepicker__year-select").selectOption("1993");
-        $(".react-datepicker__month-select").selectOption("March");
-        $(".react-datepicker__day--003").click();
-        $("[id=subjectsInput]").setValue("Arts").pressEnter();
-        $("[id=subjectsInput]").setValue("Biology").pressEnter();
-        $("[id=hobbiesWrapper]").$(byText("Sports")).click();
-        $("[id=hobbiesWrapper]").$(byText("Reading")).click();
-        $("[id=hobbiesWrapper]").$(byText("Music")).click();
-        $("[id=uploadPicture]").uploadFromClasspath("cat.jpg");
-        $("[id=currentAddress]").setValue("г. Новосибирск, ул. Красноводская, д. 36").pressEnter();
-        $("[id=react-select-3-input]").setValue("Rajasthan").pressEnter();
-        $("[id=react-select-4-input]").setValue("Jaipur").pressEnter();
+        $(".react-datepicker__year-select").selectOption(birthYear);
+        $(".react-datepicker__month-select").selectOption(birthMonth);
+        $(".react-datepicker__day--" + birthDay).click();
+        $("[id=subjectsInput]").setValue(subjectFirst).pressEnter();
+        $("[id=subjectsInput]").setValue(subjectsSecond).pressEnter();
+        $("[id=hobbiesWrapper]").$(byText(hobbyFirst)).click();
+        $("[id=hobbiesWrapper]").$(byText(hobbySecond)).click();
+        $("[id=hobbiesWrapper]").$(byText(hobbyThird)).click();
+        $("[id=uploadPicture]").uploadFromClasspath(picture);
+        $("[id=currentAddress]").setValue(currentAddress).pressEnter();
+        $("[id=react-select-3-input]").setValue(state).pressEnter();
+        $("[id=react-select-4-input]").setValue(city).pressEnter();
+
         $("[id=submit]").click();
 
         //проверка корректности заполнения
 
-        $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text("David Lynch"));
-        $(".table-responsive").$(byText("Student Email")).parent().shouldHave(text("lynch@qwe.ru"));
-        $(".table-responsive").$(byText("Gender")).parent().shouldHave(text("Other"));
-        $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text("1234567890"));
-        $(".table-responsive").$(byText("Date of Birth")).parent().shouldHave(text("03 March,1993"));
-        $(".table-responsive").$(byText("Subjects")).parent().shouldHave(text("Arts, Biology"));
-        $(".table-responsive").$(byText("Hobbies")).parent().shouldHave(text("Sports, Reading, Music"));
-        $(".table-responsive").$(byText("Picture")).parent().shouldHave(text("cat.jpg"));
-        $(".table-responsive").$(byText("Address")).parent().shouldHave(text("г. Новосибирск, ул. Красноводская, д. 36"));
-        $(".table-responsive").$(byText("State and City")).parent().shouldHave(text("Rajasthan Jaipur"));
+        $(".table-responsive").$(byText(studentName)).parent().shouldHave(text(firstName + " " + lastName));
+        $(".table-responsive").$(byText(studentEmail)).parent().shouldHave(text(userEmail));
+        $(".table-responsive").$(byText(studentGender)).parent().shouldHave(text(gender));
+        $(".table-responsive").$(byText(mobile)).parent().shouldHave(text(userNumber));
+        $(".table-responsive").$(byText(dateOfBirth)).parent().shouldHave(text(birthDay.replaceFirst("^0", "") + " " + birthMonth + "," + birthYear));
+        $(".table-responsive").$(byText(subjects)).parent().shouldHave(text(subjectFirst + ", " + subjectsSecond));
+        $(".table-responsive").$(byText(hobbies)).parent().shouldHave(text(hobbyFirst + ", " + hobbySecond + ", " + hobbyThird));
+        $(".table-responsive").$(byText(studentsPicture)).parent().shouldHave(text(picture));
+        $(".table-responsive").$(byText(address)).parent().shouldHave(text(address));
+        $(".table-responsive").$(byText(stateAndCity)).parent().shouldHave(text(state + " " + city));
 
         $("[id=closeLargeModal]").click();
 
