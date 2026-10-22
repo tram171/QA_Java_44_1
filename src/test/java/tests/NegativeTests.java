@@ -15,10 +15,10 @@ public class NegativeTests extends TestBase {
         open("/automation-practice-form");
 
         //заполнение обязательных полей формы
-        $("[id=firstName]").setValue("Тестовый");
-        $("[id=lastName]").setValue("Тест");
-        $("[id=genterWrapper]").$(byText("Male")).click();
-        $("[id=userNumber]").setValue("123456789").click();
+        $("[id=firstName]").setValue(firstName);
+        $("[id=lastName]").setValue(lastName);
+        $("[id=genterWrapper]").$(byText(gender)).click();
+        $("[id=userNumber]").setValue(userNumber).click();
 
         $("[id=submit]").click();
 
@@ -32,11 +32,11 @@ public class NegativeTests extends TestBase {
         open("/automation-practice-form");
 
         //заполнение обязательных полей формы
-        $("[id=firstName]").setValue("Тестовый");
-        $("[id=lastName]").setValue("Тест");
-        $("[id=userEmail]").setValue("123@qwe.ru.");
-        $("[id=genterWrapper]").$(byText("Male")).click();
-        $("[id=userNumber]").setValue("1234567890").click();
+        $("[id=firstName]").setValue(firstName);
+        $("[id=lastName]").setValue(lastName);
+        $("[id=userEmail]").setValue(userEmail);
+        $("[id=genterWrapper]").$(byText(gender)).click();
+        $("[id=userNumber]").setValue(userNumber).click();
 
         $("[id=submit]").click();
 
@@ -50,9 +50,9 @@ public class NegativeTests extends TestBase {
         open("/automation-practice-form");
 
         //заполнение обязательных полей формы
-        $("[id=firstName]").setValue("Тестовый");
-        $("[id=lastName]").setValue("Тест");
-        $("[id=userNumber]").setValue("1234567890").click();
+        $("[id=firstName]").setValue(firstName);
+        $("[id=lastName]").setValue(lastName);
+        $("[id=userNumber]").setValue(userNumber).click();
 
         $("[id=submit]").click();
 

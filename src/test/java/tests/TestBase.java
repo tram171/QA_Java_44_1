@@ -25,6 +25,8 @@ public class TestBase {
     public static String currentAddress = "г. Новосибирск, ул. Красноводская, д. 36";
     public static String state = "Rajasthan";
     public static String city = "Jaipur";
+    public static String userName = "Daniel";
+    public static String wrongUserEmail = "123@qwe/ru";
 
 
     public static String studentName = "Student Name";

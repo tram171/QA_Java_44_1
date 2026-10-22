@@ -15,17 +15,17 @@ public class FillsRequiredFields extends TestBase {
 
         //заполнение обязательных полей формы
 
-        $("[id=firstName]").setValue("Петров-Водкин");
-        $("[id=lastName]").setValue("Арсений");
-        $("[id=genterWrapper]").$(byText("Other")).click();
-        $("[id=userNumber]").setValue("1234567890").click();
+        $("[id=firstName]").setValue(firstName);
+        $("[id=lastName]").setValue(lastName);
+        $("[id=genterWrapper]").$(byText(gender)).click();
+        $("[id=userNumber]").setValue(userNumber).click();
         $("[id=submit]").click();
 
         //проверка корректности заполнения
 
-        $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text("Петров-Водкин Арсений"));
-        $(".table-responsive").$(byText("Gender")).parent().shouldHave(text("Other"));
-        $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text("1234567890"));
+        $(".table-responsive").$(byText(studentName)).parent().shouldHave(text(firstName + " " + lastName));
+        $(".table-responsive").$(byText(studentGender)).parent().shouldHave(text(gender));
+        $(".table-responsive").$(byText(mobile)).parent().shouldHave(text(userNumber));
 
         $("[id=closeLargeModal]").click();
     }
