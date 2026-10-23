@@ -6,6 +6,8 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static tests.testdata.TestData.*;
+
 
 public class FullRegistrationForm extends TestBase {
 
@@ -38,16 +40,16 @@ public class FullRegistrationForm extends TestBase {
 
         //проверка корректности заполнения
 
-        $(".table-responsive").$(byText(studentName)).parent().shouldHave(text(firstName + " " + lastName));
-        $(".table-responsive").$(byText(studentEmail)).parent().shouldHave(text(userEmail));
-        $(".table-responsive").$(byText(studentGender)).parent().shouldHave(text(gender));
-        $(".table-responsive").$(byText(mobile)).parent().shouldHave(text(userNumber));
-        $(".table-responsive").$(byText(dateOfBirth)).parent().shouldHave(text(birthDay.replaceFirst("^0", "") + " " + birthMonth + "," + birthYear));
-        $(".table-responsive").$(byText(subjects)).parent().shouldHave(text(subjectFirst + ", " + subjectsSecond));
-        $(".table-responsive").$(byText(hobbies)).parent().shouldHave(text(hobbyFirst + ", " + hobbySecond + ", " + hobbyThird));
-        $(".table-responsive").$(byText(studentsPicture)).parent().shouldHave(text(picture));
-        $(".table-responsive").$(byText(address)).parent().shouldHave(text(address));
-        $(".table-responsive").$(byText(stateAndCity)).parent().shouldHave(text(state + " " + city));
+        $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text(firstName + " " + lastName));
+        $(".table-responsive").$(byText("Student Email")).parent().shouldHave(text(userEmail));
+        $(".table-responsive").$(byText("Gender")).parent().shouldHave(text(gender));
+        $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text(userNumber));
+        $(".table-responsive").$(byText("Date of Birth")).parent().shouldHave(text(birthDay.replaceFirst("^0", "") + " " + birthMonth + "," + birthYear));
+        $(".table-responsive").$(byText("Subjects")).parent().shouldHave(text(subjectFirst + ", " + subjectsSecond));
+        $(".table-responsive").$(byText("Hobbies")).parent().shouldHave(text(hobbyFirst + ", " + hobbySecond + ", " + hobbyThird));
+        $(".table-responsive").$(byText("Picture")).parent().shouldHave(text(picture));
+        $(".table-responsive").$(byText("Address")).parent().shouldHave(text(currentAddress));
+        $(".table-responsive").$(byText("State and City")).parent().shouldHave(text(state + " " + city));
 
         $("[id=closeLargeModal]").click();
 

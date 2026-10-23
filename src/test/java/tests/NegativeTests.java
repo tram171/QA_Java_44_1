@@ -6,6 +6,7 @@ import static com.codeborne.selenide.Condition.cssValue;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static tests.testdata.TestData.*;
 
 public class NegativeTests extends TestBase {
 

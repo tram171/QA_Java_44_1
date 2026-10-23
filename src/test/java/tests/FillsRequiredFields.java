@@ -6,6 +6,8 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static tests.testdata.TestData.*;
+
 
 public class FillsRequiredFields extends TestBase {
 
@@ -23,9 +25,9 @@ public class FillsRequiredFields extends TestBase {
 
         //проверка корректности заполнения
 
-        $(".table-responsive").$(byText(studentName)).parent().shouldHave(text(firstName + " " + lastName));
-        $(".table-responsive").$(byText(studentGender)).parent().shouldHave(text(gender));
-        $(".table-responsive").$(byText(mobile)).parent().shouldHave(text(userNumber));
+        $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text(firstName + " " + lastName));
+        $(".table-responsive").$(byText("Gender")).parent().shouldHave(text(gender));
+        $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text(userNumber));
 
         $("[id=closeLargeModal]").click();
     }
