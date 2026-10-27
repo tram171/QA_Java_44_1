@@ -6,7 +6,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
-import static tests.testdata.TestData.*;
+
 
 public class TextBoxPage {
     // Elements
@@ -30,17 +30,17 @@ public class TextBoxPage {
     };
 
     public TextBoxPage typeCurrentAddress(String value) {
-        userCurrentAddressInput.setValue(currentAddress);
+        userCurrentAddressInput.setValue(value);
         return this;
     };
 
     public TextBoxPage typePermanentAddress(String value) {
-        userPermanentAddressInput.setValue(permanentAddress);
+        userPermanentAddressInput.setValue(value);
         return this;
     };
 
     public TextBoxPage typeUserEmail(String value) {
-        userEmailInput.setValue(userEmail);
+        userEmailInput.setValue(value);
         return this;
     };
 
