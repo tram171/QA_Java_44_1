@@ -21,6 +21,7 @@ package tests.testdata;
         public static String city = "Jaipur";
         public static String userName = "Daniel";
         public static String wrongUserEmail = "123@qwe/ru";
+        public static String wrongUserNumber = "123456789";
 
 //    public static String
 //            userName = "David Lynch",
