@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.FullRegistrationFormPage;
 
@@ -8,31 +9,69 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static tests.testdata.TestData.*;
+import static utils.RandomUtils.*;
+import static utils.RandomUtils.getRandomCity;
 
 
 public class FillsRequiredFields extends TestBase {
 
     FullRegistrationFormPage fullRegistrationFormPage = new FullRegistrationFormPage();
+
+    String
+            firstNameUtils,
+            lastNameUtils,
+            genderUtils,
+            userNumberUtils;
+
+    @BeforeEach
+    void prepareRandomData() {
+        firstNameUtils = getRandomString(10);
+        lastNameUtils = getRandomString(8);
+        genderUtils = getRandomGender();
+        userNumberUtils = getRandomPhone();
+    }
+
     @Test
     void fillsForm() {
+
         //заполнение обязательных полей формы
 
         fullRegistrationFormPage
                 .openPage()
-                .typeFirstName(firstName)
-                .typeLastName(lastName)
-                .setGender(gender)
-                .typeUserNumber(userNumber)
+                .typeFirstName(firstNameUtils)
+                .typeLastName(lastNameUtils)
+                .setGender(genderUtils)
+                .typeUserNumber(userNumberUtils)
                 .submitForm();
 
         //проверка корректности заполнения
 
         fullRegistrationFormPage
                 .modalContent()
-                .checkCell("Student Name", firstName + " " + lastName)
-                .checkCell("Gender", gender)
-                .checkCell("Mobile", userNumber)
+                .checkCell("Student Name", firstNameUtils + " " + lastNameUtils)
+                .checkCell("Gender", genderUtils)
+                .checkCell("Mobile", userNumberUtils)
                 .closeModal();
+
+
+        //заполнение обязательных полей формы
+
+//        fullRegistrationFormPage
+//                .openPage()
+//                .typeFirstName(firstName)
+//                .typeLastName(lastName)
+//                .setGender(gender)
+//                .typeUserNumber(userNumber)
+//                .submitForm();
+//
+//        //проверка корректности заполнения
+//
+//        fullRegistrationFormPage
+//                .modalContent()
+//                .checkCell("Student Name", firstName + " " + lastName)
+//                .checkCell("Gender", gender)
+//                .checkCell("Mobile", userNumber)
+//                .closeModal();
 
 
 //        open("/automation-practice-form");

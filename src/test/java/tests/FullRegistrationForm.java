@@ -1,13 +1,47 @@
 package tests;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.FullRegistrationFormPage;
 import static tests.testdata.TestData.*;
+import static utils.RandomUtils.*;
 
 
 public class FullRegistrationForm extends TestBase {
-
     FullRegistrationFormPage fullRegistrationFormPage = new FullRegistrationFormPage();
+
+    String
+            firstNameUtils,
+            lastNameUtils,
+            userEmailUtils,
+            genderUtils,
+            userNumberUtils,
+            birthYearUtils,
+            birthMonthUtils,
+            birthDayUtils,
+            subjectUtils,
+            hobbyUtils,
+            currentAddressUtils,
+            stateUtils,
+            cityUtils;
+
+    @BeforeEach
+        void prepareRandomData() {
+        firstNameUtils = getRandomString(10);
+        lastNameUtils = getRandomString(8);
+                userEmailUtils = getRandomEmail();
+                genderUtils = getRandomGender();
+                userNumberUtils = getRandomPhone();
+                birthYearUtils = getRandomBirthYear();
+                birthMonthUtils = getRandomBirthMonth();
+                birthDayUtils = getRandomBirthDay();
+                subjectUtils = getRandomSubject();
+                hobbyUtils = getRandomHobby();
+                currentAddressUtils = getRandomString(99);
+                stateUtils = getRandomState();
+                cityUtils = getRandomCity(stateUtils);
+    }
+
     @Test
     void fillsFullFormNew() {
 
@@ -15,21 +49,18 @@ public class FullRegistrationForm extends TestBase {
 
         fullRegistrationFormPage
                 .openPage()
-                .typeFirstName(firstName)
-                .typeLastName(lastName)
-                .typeUserEmail(userEmail)
-                .setGender(gender)
-                .typeUserNumber(userNumber)
-                .setDateOfBirth(birthYear, birthMonth, birthDay)
-                .selectSubject(subjectFirst)
-                .selectSubject(subjectsSecond)
-                .selectHobbies(hobbyFirst)
-                .selectHobbies(hobbySecond)
-                .selectHobbies(hobbyThird)
+                .typeFirstName(firstNameUtils)
+                .typeLastName(lastNameUtils)
+                .typeUserEmail(userEmailUtils)
+                .setGender(genderUtils)
+                .typeUserNumber(userNumberUtils)
+                .setDateOfBirth(birthYearUtils, birthMonthUtils, birthDayUtils)
+                .selectSubject(subjectUtils)
+                .selectHobbies(hobbyUtils)
                 .uploadPicture(picture)
-                .typeCurrentAddress(currentAddress)
-                .setState(state)
-                .setCity(city)
+                .typeCurrentAddress(currentAddressUtils)
+                .setState(stateUtils)
+                .setCity(cityUtils)
                 .submitForm();
 
 
@@ -37,19 +68,64 @@ public class FullRegistrationForm extends TestBase {
 
         fullRegistrationFormPage
                 .modalContent()
-                .checkCell("Student Name", firstName + " " + lastName)
-                .checkCell("Student Email", userEmail)
-                .checkCell("Gender", gender)
-                .checkCell("Mobile", userNumber)
-                .checkCell("Date of Birth", birthDay.replaceFirst("^0", "") + " " + birthMonth + "," + birthYear)
-                .checkCell("Subjects", subjectFirst + ", " + subjectsSecond)
-                .checkCell("Hobbies", hobbyFirst + ", " + hobbySecond + ", " + hobbyThird)
+                .checkCell("Student Name", firstNameUtils + " " + lastNameUtils)
+                .checkCell("Student Email", userEmailUtils)
+                .checkCell("Gender", genderUtils)
+                .checkCell("Mobile", userNumberUtils)
+                .checkCell("Date of Birth", birthDayUtils.replaceFirst("^0", "") + " " + birthMonthUtils + "," + birthYearUtils)
+                .checkCell("Subjects", subjectUtils)
+                .checkCell("Hobbies", hobbyUtils)
                 .checkCell("Picture", picture)
-                .checkCell("Address", currentAddress)
-                .checkCell("State and City", state + " " + city)
+                .checkCell("Address", currentAddressUtils)
+                .checkCell("State and City", stateUtils + " " + cityUtils)
                 .closeModal();
 
     }
+
+
+//    FullRegistrationFormPage fullRegistrationFormPage = new FullRegistrationFormPage();
+//    @Test
+//    void fillsFullFormNew() {
+//
+//        //заполнение всех полей формы
+//
+//        fullRegistrationFormPage
+//                .openPage()
+//                .typeFirstName(firstName)
+//                .typeLastName(lastName)
+//                .typeUserEmail(userEmail)
+//                .setGender(gender)
+//                .typeUserNumber(userNumber)
+//                .setDateOfBirth(birthYear, birthMonth, birthDay)
+//                .selectSubject(subjectFirst)
+//                .selectSubject(subjectsSecond)
+//                .selectHobbies(hobbyFirst)
+//                .selectHobbies(hobbySecond)
+//                .selectHobbies(hobbyThird)
+//                .uploadPicture(picture)
+//                .typeCurrentAddress(currentAddress)
+//                .setState(state)
+//                .setCity(city)
+//                .submitForm();
+//
+//
+//        //проверка корректности заполнения
+//
+//        fullRegistrationFormPage
+//                .modalContent()
+//                .checkCell("Student Name", firstName + " " + lastName)
+//                .checkCell("Student Email", userEmail)
+//                .checkCell("Gender", gender)
+//                .checkCell("Mobile", userNumber)
+//                .checkCell("Date of Birth", birthDay.replaceFirst("^0", "") + " " + birthMonth + "," + birthYear)
+//                .checkCell("Subjects", subjectFirst + ", " + subjectsSecond)
+//                .checkCell("Hobbies", hobbyFirst + ", " + hobbySecond + ", " + hobbyThird)
+//                .checkCell("Picture", picture)
+//                .checkCell("Address", currentAddress)
+//                .checkCell("State and City", state + " " + city)
+//                .closeModal();
+//
+//    }
 
 //    @Test
 //    void fillsFullFormOld() {
